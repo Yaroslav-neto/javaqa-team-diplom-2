@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CreditAccountTest {
 
-    @Test // начальный баланс 0
+    @Test // начальный баланс 0 пополнение на 3000
     public void shouldAddToPositiveBalance() {
         CreditAccount account = new CreditAccount(0, 5_000, 15);
 
