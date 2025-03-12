@@ -243,4 +243,19 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(37, account.yearChange());
     }
+
+    @Test
+        // получение геттеров
+    void shouldGetters() {
+        SavingAccount account = new SavingAccount(
+                200,
+                100,
+                10_000,
+                0
+        );
+        Assertions.assertEquals(200, account.getBalance());
+        Assertions.assertEquals(100, account.getMinBalance());
+        Assertions.assertEquals(10_000, account.getMaxBalance());
+        Assertions.assertEquals(0, account.getRate());
+    }
 }
