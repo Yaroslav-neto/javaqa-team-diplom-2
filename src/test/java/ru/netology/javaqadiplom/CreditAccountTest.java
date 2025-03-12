@@ -17,6 +17,7 @@ public class CreditAccountTest {
     }
 
     @Test
+        //БАГ
         // начальный баланс меньше 0 выброс исключения
     void shouldIllegalArgumentExceptionNegativeInitialBalance() {
         assertThrows(IllegalArgumentException.class, () -> new CreditAccount(-100, 1000, 10));
@@ -108,7 +109,7 @@ public class CreditAccountTest {
 
     @Test
         //БАГ
-        // покупка больше, чем кредитный лимит + текущий баланс
+        // покупка больше, чем кредитный лимит + текущий баланс - false
     void testPayOverCreditLimit() {
         CreditAccount account = new CreditAccount(100, 1000, 10);
         assertFalse(account.pay(1101));
@@ -141,7 +142,8 @@ public class CreditAccountTest {
     @Test
         // Проверка процентов при балансе близком к нулю
     void testYearChangeSmallBalance() {
-        CreditAccount account = new CreditAccount(-1, 1000, 15);
+        CreditAccount account = new CreditAccount(0, 1000, 15);
+        account.pay(1);
         assertEquals(0, account.yearChange());
     }
 
@@ -151,5 +153,23 @@ public class CreditAccountTest {
         CreditAccount account = new CreditAccount(100, 1000, 10);
         assertFalse(account.add((int) Long.MAX_VALUE));
         assertEquals(100, account.getBalance());
+    }
+
+    @Test
+        //БАГ
+        // Проверка расчета процентов при отрицательном балансе
+    void shouldYearChangeNegativeBalance() {
+        CreditAccount account = new CreditAccount(0, 1000, 15);
+        account.pay(250);
+        assertEquals(37, account.yearChange());
+    }
+
+    @Test
+        // получение геттеров
+    void shouldGetters() {
+        CreditAccount account = new CreditAccount(100, 1000, 15);
+        assertEquals(100, account.getBalance());
+        assertEquals(1000, account.getCreditLimit());
+        assertEquals(15, account.getRate());
     }
 }
