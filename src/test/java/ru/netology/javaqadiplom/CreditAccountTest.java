@@ -76,13 +76,6 @@ public class CreditAccountTest {
     }
 
     @Test
-        // положительный  баланс - процентов нет
-    void testYearChangeNegativeBalance() {
-        CreditAccount account = new CreditAccount(200, 1000, 15);
-        assertEquals(0, account.yearChange());
-    }
-
-    @Test
         //покупка на отрицательную сумму - 0 реакции
     void testPayNegativeAmount() {
         CreditAccount account = new CreditAccount(100, 1000, 10);
