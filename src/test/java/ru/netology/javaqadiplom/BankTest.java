@@ -140,37 +140,37 @@ class BankTest {
     @Test
     public void testPayMethodInitiallyReturnsFalse() {
         Account account = new Account();
-        assertFalse(account.pay(100), "pay method should return false initially.");
+        assertFalse(account.pay(100));
     }
 
     @Test
     public void testAddMethodInitiallyReturnsFalse() {
         Account account = new Account();
-        assertFalse(account.add(100), "add method should return false initially.");
+        assertFalse(account.add(100));
     }
 
     @Test
     public void testYearChangeInitiallyReturnsZero() {
         Account account = new Account();
-        assertEquals(0, account.yearChange(), "yearChange should return 0 initially.");
+        assertEquals(0, account.yearChange());
     }
 
     @Test
     public void testGetBalanceInitiallyIsZero() {
         Account account = new Account();
-        assertEquals(0, account.getBalance(), "Initial balance should be zero.");
+        assertEquals(0, account.getBalance());
     }
 
     @Test
     public void testGetRateInitiallyIsZero() {
         Account account = new Account();
-        assertEquals(0, account.getRate(), "Initial rate should be zero.");
+        assertEquals(0, account.getRate());
     }
 
     @Test
     public void testSetRate() {
         Account account = new Account();
         account.setRate(5);
-        assertEquals(5, account.getRate(), "Rate should be set correctly.");
+        assertEquals(5, account.getRate());
     }
 }
