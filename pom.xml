@@ -13,13 +13,13 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.7.0</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.7.0</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
 
     <build>
         <plugins>
@@ -32,10 +32,32 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <checkstyleRules>
+                        <module name="Checker">
+                            <module name="TreeWalker">
+                                <module name="LocalVariableName"/>
+                            </module>
+                        </module>
+                    </checkstyleRules>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
-
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
@@ -52,7 +74,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>
