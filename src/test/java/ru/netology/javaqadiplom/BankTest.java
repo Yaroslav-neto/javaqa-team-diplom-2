@@ -102,10 +102,7 @@ class BankTest {
         CreditAccount accountFrom = new CreditAccount(1000, 0, 10);
         CreditAccount accountTo = new CreditAccount(2000, 2000, 20);
         Bank bank = new Bank();
-        bank.transfer(accountFrom, accountTo, 0);
-
-        assertEquals(1000, accountFrom.getBalance());
-        assertEquals(2000, accountTo.getBalance());
+        Assertions.assertFalse(bank.transfer(accountFrom, accountTo, 0));
     }
 
     @Test //перевод отрицательной суммы
@@ -137,37 +134,37 @@ class BankTest {
         assertEquals(5000, accountTo.getBalance());
     }
 
-    @Test
+    @Test //вывод false после метода pay
     public void testPayMethodInitiallyReturnsFalse() {
         Account account = new Account();
         assertFalse(account.pay(100));
     }
 
-    @Test
+    @Test //вывод false после метода add
     public void testAddMethodInitiallyReturnsFalse() {
         Account account = new Account();
         assertFalse(account.add(100));
     }
 
-    @Test
+    @Test // проверка процентной ставки обычный счет на 0 до создания аккаунта
     public void testYearChangeInitiallyReturnsZero() {
         Account account = new Account();
         assertEquals(0, account.yearChange());
     }
 
-    @Test
+    @Test // проверка баланса на 0 до создания аккаунта
     public void testGetBalanceInitiallyIsZero() {
         Account account = new Account();
         assertEquals(0, account.getBalance());
     }
 
-    @Test
+    @Test // проверка процентной ставки по кпедиту на 0 до создания аккаунта
     public void testGetRateInitiallyIsZero() {
         Account account = new Account();
         assertEquals(0, account.getRate());
     }
 
-    @Test
+    @Test // проверка сеттера процентной ставки по кредиту
     public void testSetRate() {
         Account account = new Account();
         account.setRate(5);
