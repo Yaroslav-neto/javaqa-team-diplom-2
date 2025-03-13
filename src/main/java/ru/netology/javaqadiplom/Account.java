@@ -5,11 +5,16 @@ public class Account {
     protected int rate;
 
     public boolean pay(int amount) {
-        return false;
+        if (balance < amount) {
+            return false;
+        }
+        balance = balance - amount;
+        return true;
     }
 
     public boolean add(int amount) {
-        return false;
+        balance = balance + amount;
+        return true;
     }
 
     public int yearChange() {
