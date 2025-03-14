@@ -75,6 +75,8 @@ class BankTest {
         SavingAccount accountTo = new SavingAccount(1000, 1000, 2000, 20);
         Bank bank = new Bank();
         assertFalse(bank.transfer(accountFrom, accountTo, 2000));
+        assertEquals(3000, accountFrom.getBalance());
+        assertEquals(1000, accountTo.getBalance());
     }
 
     // переводы между кредитными счетами
