@@ -22,9 +22,9 @@ public class Bank {
             if (to.add(amount)) {
                 return true;
             } else {
-            from.add(amount);
+                from.add(amount);
+            }
         }
-    }
         return false;
     }
 
