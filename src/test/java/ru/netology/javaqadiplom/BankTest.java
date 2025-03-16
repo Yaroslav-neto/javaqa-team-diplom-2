@@ -82,4 +82,14 @@ class BankTest {
         assertEquals(100, fromAccount.balance);
         assertEquals(50, toAccount.balance);
     }
+
+    @Test
+    public void unsuccessfulTransferOutsideSecondAccount() {
+        SavingAccount fromAccount = new SavingAccount(1000, 50, 2000, 5);
+        SavingAccount toAccount = new SavingAccount(200, 50, 500, 5);
+        Bank bank = new Bank();
+        assertFalse(bank.transfer(fromAccount, toAccount, 500));
+        assertEquals(1000, fromAccount.getBalance());
+        assertEquals(200, toAccount.getBalance());
+    }
 }

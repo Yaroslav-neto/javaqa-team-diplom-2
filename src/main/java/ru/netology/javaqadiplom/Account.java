@@ -13,6 +13,9 @@ public class Account {
     }
 
     public boolean add(int amount) {
+        if (amount <= 0) {
+            return false;
+        }
         balance = balance + amount;
         return true;
     }

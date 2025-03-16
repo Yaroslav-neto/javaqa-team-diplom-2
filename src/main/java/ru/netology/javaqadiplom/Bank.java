@@ -17,11 +17,15 @@ public class Bank extends Account {
 
     public boolean transfer(Account from, Account to, int amount) {
         if (amount <= 0) {
-            return false;
+            return false; // Неправильная сумма
         }
         if (from.pay(amount)) {
-            to.add(amount);
-            return true;
+            if (to.add(amount)) {
+                return true;
+            } else {
+                from.add(amount);
+                return false;
+            }
         }
         return false;
     }
